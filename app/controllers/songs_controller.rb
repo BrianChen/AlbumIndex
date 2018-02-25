@@ -1,12 +1,13 @@
 class SongsController < ApplicationController
 
   def index
-    @song_title = params[:filters][:song_title]
-    @artist_name = params[:filters][:artist_name]
-    @album_title = params[:filters][:album_title]
+    @song_title = params[:song_title]
+    @artist_name = params[:artist_name]
+    @album_title = params[:album_title]
 
-    @songs = Song.find_by_title(@song_title)
-    
+    @songs = Song.where("song_title = ?", @song_title)
+    debugger
+
     render :index
   end
 
