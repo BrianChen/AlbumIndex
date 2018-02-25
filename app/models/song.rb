@@ -3,8 +3,8 @@ class Song < ApplicationRecord
 
   has_one :artist
 
-  def self.find_by_title(songTitle)
-    @songs = Song.find(:all, :condition => ['title=?', songTitle]);
+  def self.find_by_title(song_title)
+    @songs = Song.find(:all, :condition => ['title=?', song_title]);
 
     if @songs
       return @songs
