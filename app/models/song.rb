@@ -1,7 +1,8 @@
 class Song < ApplicationRecord
   validates :title, :artist_id, presence: true
 
-  has_one :artist
+  belongs_to :artist
+  belongs_to :album
 
   def self.find_by_title(song_title)
     @songs = Song.find(:all, :condition => ['title=?', song_title]);
