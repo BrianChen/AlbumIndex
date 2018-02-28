@@ -6,11 +6,14 @@ import PropTypes from 'prop-types';
  */
 const baseCls = 'song';
 
-const Song = ({title, artist, album}) => {
+const Song = ({index, title, artist, album}) => {
   return (
-    <div className={baseCls}>
-      Title:{title} Artist={artist} Album:{album}
-    </div>
+    <tr>
+      <td>{index}</td>
+      <td>{title}</td>
+      <td>{artist}</td>
+      <td>{album}</td>
+    </tr>
   );
 }
 

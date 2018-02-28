@@ -16,23 +16,19 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      filters: {
-        songTitle: '',
-        artistName: '',
-        albumTitle: '',
-      },
       songs: [],
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.updateSongs = this.updateSongs.bind(this);
   }
 
-  componentWillMount() {
-    api(this.state.filters, this.updateSongs, () => console.log('error'));
-  }
+  //might not need since we dont want to show any songs on start
+  // componentWillMount() {
+  //   api(this.state.filters, this.updateSongs, () => console.log('error'));
+  // }
 
-  onSubmit() {
-    console.log('submitted');
+  onSubmit(filters) {
+    api(filters, this.updateSongs, () => console.log('error'));
   }
 
   updateSongs(songs) {

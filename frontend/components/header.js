@@ -11,7 +11,9 @@ const Header = () => {
 
   return (
     <div className={baseCls}>
-      Album Index
+      <span className={baseCls+'__item'}>
+        Album Index
+      </span>
     </div>
   );
 };

@@ -1,0 +1,27 @@
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px 30px 0px 30px;
+
+  &__input {
+    width: 300px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 20px;
+    box-shadow: 0px 0px 10px $darkgray;
+    margin: 10px;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .filter-form {
+    flex-wrap: nowrap;
+
+    &__input {
+      width: 20vw;
+      font-size: 15px;
+    }
+  }
+}

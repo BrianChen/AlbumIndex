@@ -1,3 +1,51 @@
 // Place all the styles related to the songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table-div {
+  overflow-x: auto;
+}
+.songs {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  // table-layout: fixed;
+  width: 90%;
+  border: 1px solid black;
+}
+
+table, th, td {
+  border: 1px solid $ui-dark;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding:10px;
+  text-align: center;
+}
+
+th {
+  background-color: $blue;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: $lightgray;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $gray;
+  }
+}
+
+tr:nth-child(odd) {
+  background-color: $ui-white;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $gray;
+  }
+}
+
+tbody > tr {
+  cursor: pointer;
+}

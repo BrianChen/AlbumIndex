@@ -39,7 +39,8 @@ class FilterForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit();
+    const filters = this.state;
+    this.props.onSubmit(filters);
   }
 
   render() {
@@ -60,11 +61,11 @@ class FilterForm extends React.Component {
         <input
           className={baseCls + '__input'}
           onChange={this.onChange('albumTitle')}
-          placeholder="Enter a ablum title"
+          placeholder="Enter an ablum title"
           value={this.state.albumTitle}
         />
         <Button
-          text="submit"
+          text="Search"
           onClick={this.onSubmit}
         />
       </form>

@@ -6,18 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do |i|
-  Artist.create!(name: 'ArtistName'+(i+1).to_s)
-end
+#500 songs 100 albums 10 arist
 
-10.times do |i|
-  Album.create!(title: 'AlbumTitle'+(i+1).to_s)
-end
+0.upto(9) do |i|
+  Artist.create([{
+    name: Faker::RockBand.name
+  }])
 
-10.times do |i|
-  Song.create!(
-    title: 'SongTitle'+(i+1).to_s,
-    artist_id: i+1,
-    album_id: i+1
-  )
+  j = (i * 10) + 1
+  j.upto(j+9) do |j|
+    Album.create([{
+      title: Faker::Food.dish
+    }])
+
+    5.times do
+      Song.create([{
+        title: Faker::Movie.quote,
+        artist_id: i+1,
+        album_id: j,
+      }])
+    end
+  end
 end
