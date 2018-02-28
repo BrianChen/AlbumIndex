@@ -6,7 +6,6 @@ import React from 'react';
 const Header = () => {
   /**
    * Base CSS class
-   * @returns {ReactElement}
    */
   const baseCls = 'header';
 
@@ -15,7 +14,6 @@ const Header = () => {
       Album Index
     </div>
   );
-
-}
+};
 
 export default Header;
