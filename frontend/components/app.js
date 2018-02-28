@@ -3,6 +3,7 @@ import React from 'react';
 import Songs from './songs';
 import Header from './header';
 import FilterForm from './filter-form';
+import { api, asArray } from '../utils/api';
 
 /**
  * Base CSS class
@@ -15,24 +16,27 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      songs: [{
-"id": 6,
-"title": "SongTitle6",
-"artist": {
-"id": 6,
-"name": "ArtistName6"
-},
-"album": {
-"id": 6,
-"title": "AlbumTitle6"
-}
-}],
+      filters: {
+        songTitle: '',
+        artistName: '',
+        albumTitle: '',
+      },
+      songs: [],
     }
     this.onSubmit = this.onSubmit.bind(this);
+    this.updateSongs = this.updateSongs.bind(this);
+  }
+
+  componentWillMount() {
+    api(this.state.filters, this.updateSongs, () => console.log('error'));
   }
 
   onSubmit() {
     console.log('submitted');
+  }
+
+  updateSongs(songs) {
+    this.setState({songs: asArray(songs)});
   }
 
   render() {
