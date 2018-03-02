@@ -2,15 +2,19 @@ require 'rails_helper'
 
 RSpec.describe Song, type: :model do
   before(:all) do
-    @song = Song.new(title: "NewSong", artist_id: 1, album_id: 2)
+    @artist = Artist.create(name: 'artistName')
+    @album = Album.create(title: 'albumTitle')
+
+
+    @song = Song.new(title: "NewSong", artist_id: @artist.id, album_id: @album.id)
     @DBSong = Song.create(title: "DBSong")
   end
 
   describe "Validations" do
     it "should contain a title, artist_id and album_id" do
       expect(@song.title).to eq("NewSong")
-      expect(@song.artist_id).to eq(1)
-      expect(@song.album_id).to eq(2)
+      expect(@song.artist_id).to eq(@artist.id)
+      expect(@song.album_id).to eq(@album.id)
     end
 
     it "should require a title" do

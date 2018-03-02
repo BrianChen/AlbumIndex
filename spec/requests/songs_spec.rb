@@ -1,10 +1,13 @@
-require 'rails_helper'
-
-RSpec.describe "Songs", type: :request do
-  describe "GET /songs" do
-    it "works! (now write some real specs)" do
-      get 
-      expect(response).to have_http_status(200)
-    end
-  end
-end
+# require 'rails_helper'
+#
+# RSpec.describe "Songs", type: :request do
+#   it "fetches songs filtering by song title, artist name and album title" do
+#     let(:artist)  { build :artist }
+#     let(:album)  { build :album }
+#     let(:song) { build :song, title: 'song title', artist: artist, album: album }
+#
+#     visit api_songs
+#
+#     # song = Factory(:song)
+#   end
+# end
