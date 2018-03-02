@@ -1,5 +1,6 @@
-FactoryGirl.define do
-  factory :song do
-    
-  end
-end
+# FactoryGirl.define do
+#   factory :song do |f|
+#     f.sequence
+#
+#   end
+# end

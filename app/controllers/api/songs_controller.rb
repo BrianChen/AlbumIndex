@@ -1,22 +1,31 @@
 class Api::SongsController < ApplicationController
 
   def index
-    #Todo : check these params exist
     song_title = params[:filters][:songTitle]
     artist_name = params[:filters][:artistName]
     album_title = params[:filters][:albumTitle]
 
-    if artist_name != ''
-      @artists = Artist.find_by_name(artist_name)
+    @artist_ids = Artist.find_by_name(artist_name)
+    @album_ids = Album.find_by_title(album_title)
+
+    if song_title == '' && artist_name == '' && album_title == ''
+      @songs = []
+    elsif song_title != '' && artist_name == '' && album_title == ''
+      @songs = Song.where("lower(title) like ?", "%#{song_title.downcase}%")
+    elsif song_title == '' && artist_name != '' && album_title == ''
+      @songs = Song.where(artist_id: @artist_ids)
+    elsif song_title == '' && artist_name == '' && album_title != ''
+      @songs = Song.where(album_id: @album_ids)
+    elsif song_title != '' && artist_name != '' && album_title == ''
+      @songs = Song.where("lower(title) like ?", "%#{song_title.downcase}%").where(artist_id: @artist_ids)
+    elsif song_title != '' && artist_name == '' && album_title != ''
+      @songs = Song.where("lower(title) like ?", "%#{song_title.downcase}%").where(album_id: @album_ids)
+    elsif song_title == '' && artist_name != '' && album_title != ''
+      @songs = Song.where(artist_id: @artist_ids).where(album_id: @album_ids)
+    else
+      @songs = Song.where("lower(title) like ?", "%#{song_title.downcase}%").where(artist_id: @artist_ids).where(album_id: @album_ids)
     end
 
-    if album_title != ''
-      @album = Album.find_by(title: album_title)
-    end
-
-    # @songs = Song.where("title = ?", @song_title)
-    @songs = Song.all
-    byebug
     render :index
   end
 
